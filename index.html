@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Summer Sun</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        line-height: 1;
+        font-weight: normal;
+      }
+      @font-face {
+        font-family: Mali;
+        font-style: normal;
+        font-display: fallback;
+        src: local('Mali Light'), local('Mali-Light'), url(mali/Mali-Light.ttf) format('truetype');
+      }
+      body {
+        font-family: Mali;
+      }
+      #background {
+        background: radial-gradient(circle at 25% 25%, rgb(255, 255, 255),rgb(210, 245, 255));
+      }
+      #background, #content {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #bio {
+        background: white;
+        padding: 48px 32px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h1 {
+        margin-top: -9px;
+        font-size: 48px;
+      }
+      p, nav {
+        font-size: 24px;
+      }
+      a {
+        color: rgba(0, 0, 0, 0.8);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      h1, p {
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="background"></div>
+    <div id="content">
+      <div id="bio">
+        <div id="borderbox">
+          <h1>Summer Sun</h1>
+          <p>artist, developer, human</p>
+          <nav>
+            <a href="mailto:hey@summer.dev">say hi</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
