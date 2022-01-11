@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="300; url=https://www.youtube.com/watch?v=lDQO-Ru0cc4">
+    <meta http-equiv="refresh" content="300; url=https://www.youtube.com/embed/o_mHFfsTPW8?autoplay=1">
     <title>Summer Davies</title>
     <style>
       @keyframes fall {
@@ -330,11 +330,14 @@
       <div id="main">
         <h1><span>Summer Davies</span></h1>
         <h2><span>computer witch</span></h2>
-        <h3><a href="https://github.com/summer4096">github</a> <a href="mailto:hi@summer.dev">email</a></h3>
+        <h3><a href="https://github.com/summer4096">github</a> <a id="email_addy" href="mailto:hi@">email</a></h3>
       </div>
       <span id="clock"></span>
     </div>
     <script type="text/javascript">
+      const emailAddy = document.querySelector('#email_addy')
+      emailAddy.setAttribute('href', emailAddy.getAttribute('href') + 'summer.dev')
+
       function loadMediumBackground () {
         const img = new Image()
         img.src = 'bg-1920.jpg'
