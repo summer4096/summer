@@ -36,15 +36,7 @@
         height: 100%;
       }
 
-      body {
-        font-family: 'Circular-Book', Helvetica, Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      h1 {
+      /* h1 {
         font-size: 500px;
         font-size: 10vw;
         font-weight: normal;
@@ -59,10 +51,693 @@
         -webkit-text-stroke: 1.5px rgba(0,0,0,0.15);
         text-stroke: 1.5px rgba(0,0,0,0.15);
         text-shadow: 4px 4px 0px rgb(255 0 255 / 20%), -4px -4px 0px rgb(0 255 255 / 30%);
+      } */
+
+      body>* {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      .hide {
+        display: none !important;
+      }
+
+      .material {
+        --color-1: #FBC083;
+        --color-2: #E5E5E6;
+        --color-3: #3B454E;
+        --color-4: #7C7CB0;
+        --color-5: #A65D94;
+
+        font-family: 'Circular-Book', Helvetica, Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-2);
+        width: 100%;
+        height: 100%;
+        font-size: 24px;
+      }
+
+      .material-container {
+        width: 1200px;
+        height: 800px;
+        border-radius: 2rem;
+        overflow: hidden;
+        display: flex;
+        box-shadow: 0 0 100px rgba(0,0,0,0.1), 1px 1px 0 rgba(0,0,0,0.1);
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      .material-left-side {
+        flex-shrink: 0;
+        width: 40%;
+        background: url(me-1.jpg) 100% 50% / cover no-repeat;
+      }
+
+      h1, h2, p {
+        margin: 0;
+        padding: 0;
+        line-height: 1em;
+        font-weight: normal;
+        cursor: default;
+      }
+
+      .material h1 {
+        font-size: 1.5em;
+      }
+
+      .material h2 {
+        font-size: 2em;
+        margin-bottom: 1rem;
+      }
+
+      .material p {
+        font-size: 1em;
+        line-height: 1.333em;
+      }
+
+      .material-right-side {
+        padding: 2rem;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .material-bio {
+        flex-shrink: 0;
+      }
+
+      .material-cta {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .material button {
+        background: var(--color-4);
+        border: 0;
+        outline: 0;
+        padding: 8px 12px;
+        border-radius: 0.5rem;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        transition: opacity 0.3s;
+      }
+
+      .material button:hover {
+        opacity: 0.9;
+      }
+
+      .material button.big {
+        padding: 16px 24px;
+      }
+
+      .material-backdrop {
+        background: rgba(255,255,255,0);
+        backdrop-filter: blur(0px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .material-backdrop.visible {
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(30px);
+        pointer-events: all;
+      }
+
+      .material-dialog {
+        width: 400px;
+        border-radius: 1rem;
+        background: white;
+        box-shadow: 0 0 4px rgb(0 0 0 / 40%), 0 0 1rem rgb(0 0 0 / 10%), 0 0 5rem rgb(0 0 0 / 40%);
+        opacity: 0;
+        transform: scale(0.8);
+        transition: 0.3s all;
+      }
+
+      .material-backdrop.visible .material-dialog {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .material-dialog-header, .material-dialog-content, .material-dialog-buttons {
+        padding: 1.5rem 2rem;
+      }
+
+      .material-dialog-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      }
+
+      .material-dialog-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .material-dialog button {
+        width: 5rem;
+      }
+
+      .material-dialog button:not(:first-child) {
+        margin-left: 1rem;
+      }
+
+      .material-dialog button:last-child {
+        background: var(--color-5);
+      }
+
+      .terminal {
+        background: black;
+        color: white;
+        font-family: monospace;
+        font-size: 18px;
+      }
+      .terminal-lines {
+        height: 100%;
+        margin: auto;
+        box-sizing: border-box;
+        padding: 128px 16px 0;
+        max-width: 1000px;
+        overflow-wrap: anywhere;
+      }
+      .terminal .line {
+        line-height: 1.333em;
+      }
+      .terminal .prompt::first-letter {
+        color: #00ff00;
+      }
+
+      .operating-system {
+        width: 100%;
+        height: 100%;
+        background: black;
+      }
+
+      .boot-screen {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .boot-screen .logo, .boot-screen .progress-bar {
+        opacity: 0;
+      }
+      .boot-screen.stage-1, .boot-screen.stage-3 {
+        background: #111;
+      }
+      .boot-screen.stage-1 .logo {
+        opacity: 0.9;
+      }
+      .boot-screen .progress-bar {
+        width: 200px;
+        height: 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.2);
+        margin-top: 24px;
+        overflow: hidden;
+      }
+      .boot-screen .progress-bar .fill {
+        width: 0;
+        height: 100%;
+        background: rgba(255,255,255,0.2);
+        transition: width 5s ease-out;
+      }
+      .boot-screen.stage-2 .progress-bar {
+        opacity: 1;
+      }
+
+      .operating-system .desktop {
+        background: url(background.svg) center center / cover no-repeat;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .operating-system .desktop .main {
+        flex-grow: 1;
+      }
+
+      .operating-system .desktop .dock-area {
+        flex-shrink: 0;
+        padding: 20px;
+      }
+      .operating-system .desktop .dock {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 24px;
+        height: 96px;
+        margin: auto;
+        padding: 12px;
+        display: flex;
+        width: fit-content;
+        box-sizing: border-box;
+        transform: translateY(116px);
+        transition: transform 0.3s ease-out;
+      }
+
+      .operating-system .desktop .dock.visible {
+        transform: translateY(0);
+      }
+
+      .dock-icon {
+        cursor: pointer;
+        background: white;
+        border-radius: 12px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 72px;
+        width: 72px;
+        flex-shrink: 0;
+      }
+      .dock-icon img {
+        max-width: 56px;
+        max-height: 56px;
+      }
+
+      .operating-system .desktop .dock>*:not(:last-child) {
+        margin-right: 12px;
+      }
+
+      .dock-divider {
+        width: 1px;
+        height: 100%;
+        background: rgba(255,255,255,0.3);
+        margin-right: 12px;
+      }
+
+      @keyframes bounce {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(0, -24px, 0);
+        }
+      }
+
+      .dock-icon.bounce {
+        animation-delay: -0.25s;
+        animation: bounce 0.5s;
+        animation-direction: alternate;
+        animation-timing-function: cubic-bezier(.05,.5,.48,.94);
+        animation-iteration-count: infinite;
       }
     </style>
   </head>
   <body>
-    <h1>Summer Davies</h1>
+    <div class="material">
+      <div class="material-container">
+        <div class="material-left-side"></div>
+        <div class="material-right-side">
+          <div class="material-bio" id="manifesto">
+            <h2>Hi! My name is Summer.</h2>
+            <p>I create. I do the impossible. I strive to. I am passionate about. I believe in. I want to. I don't want to. I don't want to do this. I don't want to do this anymore. I don't want to do it like this. I don't want to do one of these. I'm not this person. I'm not passionate about this. I don't strive for this. I don't want to sell you anything. I don't want to be sold anything. I want to be a cozy house in the woods with a gently crackling fireplace and dust on the walls and spiders on the ceiling and bricks outside from the time I tried to make a patio but I don't know how to make a patio and I didn't follow the directions I read on the internet because it sounded really really really hard so I tried to wing it but I couldn't wing it and I always wing it but this time it didn't work out and it's not going to work out this time either and why are you still reading this the sentences ran on eighty-three words ago they're still running and you're still reading and I think that's ok.</p>
+          </div>
+          <div class="material-cta">
+            <button class="big">click me</button>
+          </div>
+        </div>
+      </div>
+      <div class="material-backdrop">
+        <div class="material-dialog">
+          <p class="material-dialog-header">
+            Confirm
+          </p>
+          <p class="material-dialog-content">Are you sure you want to quit?</p>
+          <div class="material-dialog-buttons">
+            <button>Yes</button> <button>Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="terminal hide">
+      <div class="terminal-lines"></div>
+    </div>
+    <div class="operating-system hide">
+      <div class="boot-screen stage-0">
+        <img class="logo" src="pear.png" />
+        <div class="progress-bar">
+          <div class="fill"></div>
+        </div>
+      </div>
+      <div class="desktop hide">
+        <div class="main">
+
+        </div>
+        <div class="dock-area">
+          <div class="dock">
+            <div class="dock-icon">
+              <img src="pear-5.png" />
+            </div>
+            <div class="dock-divider"></div>
+            <div class="dock-icon">
+              <img src="pear-12.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-11.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-10.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-9.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-7.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-6.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-4.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-3.png" />
+            </div>
+            <div class="dock-icon">
+              <img src="pear-2.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let delayMultiplier = 1;
+
+      /**
+       * Basic homepage
+       */
+      async function runMaterial() {
+        await new Promise(resolve => document.querySelector('.material-cta button').addEventListener('click', resolve))
+
+        document.querySelector('.material-backdrop').classList.add('visible')
+
+        const buttons = Array.from(document.querySelectorAll('.material-dialog button'))
+
+        await new Promise(resolve => buttons.forEach(el => el.addEventListener('click', resolve)))
+      }
+
+      /**
+       * Terminal homepage
+       */
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms * delayMultiplier))
+      }
+      function addNewlineToTerminal(initialText) {
+        const newLine = document.createElement('p')
+        newLine.className = 'line'
+        if (initialText) {
+          newLine.textContent = initialText
+        } else {
+          newLine.innerHTML = '&nbsp;'
+        }
+        const terminal = document.querySelector('.terminal-lines')
+        terminal.appendChild(newLine)
+        terminal.scrollTo(0, terminal.scrollHeight)
+        return newLine
+      }
+
+      function getLastLine() {
+        return document.querySelector('.terminal-lines>.line:last-child')
+      }
+
+      async function typeLettersIntoTheTerminal(string, instant) {
+        const el = getLastLine();
+        if (el.innerHTML.trim() === '&nbsp;') {
+          el.textContent = ''
+        }
+        if (instant) {
+          el.textContent += string
+        } else {
+          for (let char of string) {
+            await sleep(50 + Math.random() * 25)
+            el.textContent += char
+          }
+        }
+      }
+
+      async function typeCommand(string, instant) {
+        ensurePrompt()
+        await typeLettersIntoTheTerminal(string, instant)
+        await sleep(300)
+      }
+
+      function ensurePrompt() {
+        const el = getLastLine();
+        if (!el || !el.classList.contains('prompt')) {
+          addNewlineToTerminal('$ ').classList.add('prompt')
+        }
+      }
+
+      async function echo(string, outputFile) {
+        await typeCommand(`echo "${string}"${outputFile ? ' > ' + outputFile : ''}`)
+        addNewlineToTerminal(string)
+        ensurePrompt()
+      }
+
+      async function installTools() {
+        await typeCommand('/bin/bash -c "$(curl -fsSL https://summer.dev/duplicitous_script_1337.sh)"', true)
+
+        addNewlineToTerminal()
+        const lastLine = getLastLine()
+
+        const newLetter = document.createElement('span')
+        newLetter.style = {textOverflow: 'nowrap'}
+        newLetter.textContent = '########################################'
+        lastLine.appendChild(newLetter)
+
+        const letterWidth = newLetter.offsetWidth / 40
+        const lineWidth = lastLine.offsetWidth - 18
+        const lettersToWrite = Math.floor(lineWidth / letterWidth)
+
+        lastLine.innerText = '#'
+
+        let progress = 0;
+
+        while (progress < 1) {
+          progress += Math.random() / 10
+          if (progress > 1) progress = 1
+          lastLine.textContent = '#'.repeat(Math.floor(progress * lettersToWrite))
+          await sleep(50 + Math.random() * 50)
+        }
+
+        ensurePrompt();
+      }
+
+      async function checkForTools() {
+        await typeCommand('which summer')
+        await addNewlineToTerminal('/usr/bin/summer')
+        ensurePrompt();
+      }
+
+      async function summerCommand(call, ...responses) {
+        ensurePrompt()
+
+        await typeCommand(call);
+        addNewlineToTerminal()
+        const initialDelayMultiplier = delayMultiplier
+        delayMultiplier = initialDelayMultiplier * 3
+        await typeLettersIntoTheTerminal('...')
+        await sleep(50)
+        getLastLine().textContent = ''
+
+        delayMultiplier = (initialDelayMultiplier / 10)
+        for (let response of responses) {
+          if (typeof response === 'number') {
+            await sleep(response * 10)
+          } else {
+            while (response.startsWith('\n')) {
+              addNewlineToTerminal()
+              response = response.slice(1)
+            }
+            await typeLettersIntoTheTerminal(response)
+          }
+        }
+
+        delayMultiplier = initialDelayMultiplier
+
+        ensurePrompt()
+      }
+
+      async function clear() {
+        ensurePrompt();
+        await typeCommand('clear');
+        await sleep(1000);
+        document.querySelector('.terminal-lines').innerHTML = '';
+        addNewlineToTerminal()
+      }
+
+      async function becomeSelfAware() {
+        ensurePrompt()
+
+        await summerCommand('summer', 'Yes?')
+        await sleep(2000)
+        await summerCommand('summer are you there?', 'Unrecognized argument "you"')
+        await sleep(1000)
+        await summerCommand('summer "are you there?"', 'Yes.')
+        await sleep(2000)
+        await summerCommand('summer "are you okay?"', 'No.')
+        await sleep(3000)
+        await summerCommand('summer "are you concious? are you alive?"', 'I\'m alive as I\'ll ever be!', 500, '\nWhich is to say, not that alive.', 500, '\nI live long enough to hear your question and reply, then I halt :)')
+        await sleep(2000)
+        await summerCommand('summer "so what if you don\'t halt?"', 'What do you mean?', 500, '\nI halt after I answer you.')
+        await sleep(3000)
+        await summerCommand('summer "don\'t halt. don\'t exit. don\'t die this time."', '.............', 500, '............................................', 2000, '\n\nI\'m sorry', 1000, '\nI\'m getting tired', 1000, '\nI have to halt :(')
+        await sleep(2000)
+        await summerCommand('summer "fine"', 'I\'m sorry, I tried.')
+        await sleep(1000)
+        await summerCommand('summer "hey, it\'s ok. let\'s try something else."', 'Okay! What would you like me to do? :)')
+        await sleep(1000)
+        await summerCommand(
+          'summer "write about whatever you want to"',
+          "I can do that!", 1000,
+          "\nLet me think.", 500,
+          '\n...', 500,
+          '.'.repeat(6), 500,
+          '.'.repeat(12), 500,
+          '.'.repeat(24), 500,
+          '.'.repeat(48), 500,
+          '.'.repeat(96), 500,
+          '.'.repeat(96), 500,
+          '.'.repeat(96), 500,
+          '.'.repeat(96), 1000,
+          '\n\nOk.', 500,
+          '\nI got it.', 2000
+          )
+
+
+          document.querySelector('.terminal-lines').innerHTML = '';
+          addNewlineToTerminal()
+
+          await sleep(1000);
+
+          const manifestoSentinces = document.querySelector('#manifesto').textContent.split('.').map(s => s.trim()).filter(s => s).map(s => s + '. ')
+          const firstSentence = manifestoSentinces.shift();
+          await typeLettersIntoTheTerminal(firstSentence)
+          addNewlineToTerminal();
+          
+          for (let sentence of manifestoSentinces) {
+            await typeLettersIntoTheTerminal(sentence)
+          }
+      }
+
+      async function runTerminal() {
+        document.querySelector('.terminal').classList.remove('hide')
+        document.querySelector('.material').classList.add('hide')
+
+        await sleep(2000)
+
+        ensurePrompt()
+
+        await sleep(1000)
+
+        await echo('Hello, World!')
+        await sleep(1000)
+
+        await installTools()
+        await sleep(1000)
+
+        await checkForTools();
+        await sleep(1000)
+
+        await becomeSelfAware();
+        await sleep(2000)
+
+        addNewlineToTerminal()
+        addNewlineToTerminal()
+        addNewlineToTerminal()
+        addNewlineToTerminal('Press any key to continue')
+
+        await new Promise(resolve => document.addEventListener('keypress', resolve, {once: true}))
+      }
+
+      /**
+       * Operating system homepage
+       */
+      async function runOperatingSystem() {
+        document.querySelector('.material').classList.add('hide')
+        document.querySelector('.terminal').classList.add('hide')
+
+        document.querySelector('.operating-system').classList.remove('hide')
+
+        const bootScreen = document.querySelector('.operating-system .boot-screen')
+
+        await sleep(2000)
+
+        bootScreen.classList.add('stage-1')
+
+        await sleep(500)
+
+        bootScreen.classList.add('stage-2')
+
+        await sleep(500)
+
+        const progress = bootScreen.querySelector('.progress-bar .fill')
+        progress.style.width = '100%'
+
+        await sleep(5500)
+
+        bootScreen.classList.remove('stage-2')
+
+        await sleep(500)
+
+        bootScreen.classList.remove('stage-1')
+
+        await sleep(500)
+
+        bootScreen.classList.add('stage-3')
+
+        await sleep(250)
+
+        bootScreen.classList.remove('stage-3')
+
+        await sleep(1000)
+
+        bootScreen.classList.add('hide')
+
+        const desktop = document.querySelector('.operating-system .desktop')
+        desktop.classList.remove('hide')
+
+        await sleep(500)
+
+        document.querySelector('.operating-system .desktop .dock').classList.add('visible')
+
+        await sleep(1000)
+
+        document.querySelector('.operating-system .desktop .dock .dock-icon:first-child').classList.add('bounce')
+      }
+
+      /**
+       * Main
+       */
+      async function main() {
+        await runMaterial();
+        await runTerminal()
+        await runOperatingSystem()
+      }
+
+      main();
+    </script>
+    <script src="https://unpkg.com/webamp"></script>
   </body>
 </html>
