@@ -1,7 +1,3 @@
-.titlebar {
-	background-color: #f6f6f6;
-}
-
 .titlebar.webkit-draggable {
 	-webkit-app-region: drag;
 }

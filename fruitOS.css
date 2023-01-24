@@ -168,9 +168,7 @@
 
 .fruitOS .window {
   flex-shrink: 0;
-  width: 1000px;
-  height: 600px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 32px rgb(0 0 0 / 5%);
@@ -187,7 +185,6 @@
 }
 
 .fruitOS .window .titlebar {
-  background-color: #f6f6f6;
   padding: 12px 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
@@ -208,11 +205,19 @@
 }
 
 .fruitOS .window .titlebar .title {
-  cursor: default;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 14px;
 }
 
 .fruitOS .window .window-main {
   flex-grow: 1;
+}
+
+.fruitOS .window .footer {
+  flex-shrink: 0;
+  padding: 8px;
+  text-align: center;
 }
 
 .fruitOS .window iframe {
@@ -251,4 +256,45 @@
 
 .fruitOS .menu-bar-item.logo img {
   height: 20px;
+}
+
+.photo-booth video {
+  width: 960px;
+  height: 720px;
+  display: block;
+}
+
+.photo-booth .selfie-button {
+  background: rgba(255, 0, 0, 0.95);
+  height: 48px;
+  width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 100%;
+}
+
+.photo-booth .selfie-button img {
+  max-width: 28px;
+  max-height: 28px;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.photo-flash {
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.photo-flash.flashing {
+  animation: 1s flash;
 }

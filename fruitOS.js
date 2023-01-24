@@ -73,5 +73,5 @@ async function runFruitOS() {
 
   await sleep(600)
 
-  document.querySelector('.fruitOS .browser.window .window-main').innerHTML = '<iframe src="https://www.zombo.com/">'
+  photoBooth()
 }
