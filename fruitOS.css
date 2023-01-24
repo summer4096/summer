@@ -78,7 +78,6 @@
 }
 
 .dock-icon {
-  cursor: pointer;
   background: white;
   border-radius: 12px;
   text-align: center;
@@ -169,8 +168,8 @@
 
 .fruitOS .window {
   flex-shrink: 0;
-  width: 1200px;
-  height: 800px;
+  width: 1000px;
+  height: 600px;
   background: white;
   border-radius: 12px;
   overflow: hidden;
