@@ -128,12 +128,14 @@ async function summerCommand(call, ...responses) {
   ensurePrompt()
 }
 
-async function clear() {
-  ensurePrompt();
-  await typeCommand('clear');
-  await sleep(1000);
-  document.querySelector('.terminal-lines').innerHTML = '';
+async function pressAnyKeyToContinue() {
   addNewlineToTerminal()
+  addNewlineToTerminal()
+  addNewlineToTerminal()
+  addNewlineToTerminal('Press any key to continue')
+  scrollToBottom()
+
+  await new Promise(resolve => document.addEventListener('keypress', resolve, {once: true}))
 }
 
 async function becomeSelfAware() {
@@ -165,12 +167,13 @@ async function becomeSelfAware() {
     '.'.repeat(24), 500,
     '.'.repeat(48), 500,
     '.'.repeat(96), 500,
-    '.'.repeat(96), 500,
-    '.'.repeat(96), 500,
-    '.'.repeat(96), 1000,
     '\n\nOk.', 500,
-    '\nI\'ve got it.', 2000
+    '\nI\'ve got it.', 1000
     )
+
+    getLastLine().innerHTML = '&nbsp;'
+
+    await pressAnyKeyToContinue();
 
     document.querySelector('.terminal-lines').innerHTML = '';
     addNewlineToTerminal()
@@ -199,7 +202,7 @@ async function runTerminal() {
   document.querySelector('.terminal').classList.remove('hide')
   document.querySelector('.material').classList.add('hide')
 
-  await sleep(2000)
+  await sleep(1000)
 
   ensurePrompt()
 
@@ -217,10 +220,5 @@ async function runTerminal() {
   await becomeSelfAware();
   await sleep(2000)
 
-  addNewlineToTerminal()
-  addNewlineToTerminal()
-  addNewlineToTerminal()
-  addNewlineToTerminal('Press any key to continue')
-
-  await new Promise(resolve => document.addEventListener('keypress', resolve, {once: true}))
+  await pressAnyKeyToContinue();
 }
