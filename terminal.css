@@ -1,0 +1,20 @@
+.terminal {
+  background: black;
+  color: white;
+  font-family: monospace;
+  font-size: 18px;
+  overflow: hidden;
+  padding: 128px 16px;
+}
+.terminal-lines {
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 1000px;
+  overflow-wrap: anywhere;
+}
+.terminal .line {
+  line-height: 1.333em;
+}
+.terminal .prompt::first-letter {
+  color: #00ff00;
+}
