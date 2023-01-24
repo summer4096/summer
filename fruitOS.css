@@ -262,6 +262,7 @@
   width: 960px;
   height: 720px;
   display: block;
+  transform: scaleX(-1);
 }
 
 .photo-booth .selfie-button {
