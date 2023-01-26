@@ -1,0 +1,58 @@
+.backdrop {
+  background: rgba(255,255,255,0);
+  backdrop-filter: blur(0px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.backdrop.visible {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(30px);
+  pointer-events: all;
+}
+
+.dialog {
+  width: 400px;
+  background: white;
+  box-shadow: 0 0 4px rgb(0 0 0 / 40%), 0 0 1rem rgb(0 0 0 / 10%), 0 0 5rem rgb(0 0 0 / 40%);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 0.3s all;
+  font-family: "CircularXXWeb-Book", sans-serif;
+}
+
+.backdrop.visible .dialog {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dialog-header, .dialog-content, .dialog-buttons {
+  padding: 1rem;
+}
+
+.dialog-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.dialog-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog button {
+  width: 4rem;
+  height: 2rem;
+}
+
+.dialog button:not(:first-child) {
+  margin-left: 1rem;
+}
