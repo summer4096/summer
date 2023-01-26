@@ -200,7 +200,7 @@ async function becomeSelfAware() {
 
 async function runTerminal() {
   document.querySelector('.terminal').classList.remove('hide')
-  document.querySelector('.material').classList.add('hide')
+  document.querySelector('.initial-homepage').classList.add('hide')
 
   await sleep(1000)
 
