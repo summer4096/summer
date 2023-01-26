@@ -16,4 +16,6 @@ async function runInitialHomepage() {
   const buttons = Array.from(document.querySelectorAll('.dialog button'))
 
   await new Promise(resolve => buttons.forEach(el => el.addEventListener('click', resolve)))
+
+  document.querySelector('.backdrop').classList.remove('visible')
 }

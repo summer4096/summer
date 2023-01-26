@@ -135,7 +135,14 @@ async function pressAnyKeyToContinue() {
   addNewlineToTerminal('Press any key to continue')
   scrollToBottom()
 
-  await new Promise(resolve => document.addEventListener('keypress', resolve, {once: true}))
+  let resolve
+  await new Promise(_resolve => {
+    resolve = _resolve
+    document.addEventListener('keypress', resolve)
+    document.addEventListener('click', resolve)
+  })
+  document.removeEventListener('keypress', resolve)
+  document.removeEventListener('click', resolve)
 }
 
 async function becomeSelfAware() {
