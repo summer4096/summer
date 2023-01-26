@@ -2,7 +2,7 @@
  * Fruit OS system homepage
  */
 async function runFruitOS() {
-  document.querySelector('.material').classList.add('hide')
+  document.querySelector('.initial-homepage').classList.add('hide')
   document.querySelector('.terminal').classList.add('hide')
 
   document.querySelector('.fruitOS').classList.remove('hide')

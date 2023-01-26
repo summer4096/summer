@@ -1,0 +1,182 @@
+.initial-homepage {
+  overflow: auto;
+  font-family: "NanumMyeongjo", serif;
+  line-height: 1.2;
+}
+
+.initial-homepage>* {
+  flex-shrink: 0;
+}
+
+.initial-homepage .main {
+  margin: calc(100vh + 33px) 0;
+  z-index: 100;
+  position: relative;
+  background: white;
+  box-shadow: 0 0 20vh 30vh white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.initial-homepage .main>* {
+  flex-shrink: 0;
+}
+
+.initial-homepage>header {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  pointer-events: none;
+}
+
+.initial-homepage h1, .initial-homepage h2, .initial-homepage h3, .initial-homepage h4 {
+  margin: 0;
+  font-family: "NanumMyeongjo", serif;
+}
+
+.initial-homepage h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.initial-homepage h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.initial-homepage h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.initial-homepage h4 {
+  font-size: 1.333rem;
+}
+
+.initial-homepage .columns {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.initial-homepage .left-column {
+  flex-shrink: 0;
+  width: 400px;
+  margin-right: 50px;
+}
+
+.picture-of-me {
+  overflow: hidden;
+  border-radius: 5px;
+  background: url(me-1.jpg) center center / cover no-repeat;
+}
+
+.initial-homepage .right-column {
+  flex-grow: 1;
+}
+
+.initial-homepage .main>.resume {
+  margin-bottom: 50px;
+  font-family: "CircularXXWeb-Book", sans-serif;
+}
+
+.initial-homepage .experience {
+  margin-top: 2rem;
+}
+
+.initial-homepage .experience section:not(:first-of-type) {
+  margin-top: 2rem;
+}
+
+.initial-homepage .experience header {
+  display: flex;
+  align-items: baseline;
+}
+
+.initial-homepage .experience header>*:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.initial-homepage .experience p {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.initial-homepage .main>footer {
+  margin-top: 50px;
+}
+
+.initial-homepage hr {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.initial-homepage .zalgo {
+  color: #0000EE;
+  cursor: pointer;
+  position: relative;
+}
+
+.initial-homepage .zalgo:hover {
+  text-decoration: underline;
+}
+
+.initial-homepage a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.initial-homepage a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1250px) {
+  .initial-homepage .left-column {
+    margin-right: 25px;
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .initial-homepage .columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .initial-homepage .picture-of-me {
+    background: url(me-1.jpg) center 47% / cover no-repeat;
+    width: 100%;
+    height: 35vw;
+    border-radius: 0;
+    margin-right: 0;
+  }
+
+  .initial-homepage footer .left-column {
+    display: none;
+  }
+
+  .initial-homepage .columns {
+    padding: 0;
+  }  
+
+  .initial-homepage .right-column {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .initial-homepage .right-column {
+    padding: 10px;
+  }
+}
