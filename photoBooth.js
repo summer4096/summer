@@ -1,4 +1,4 @@
-async function photoBooth() {
+bindDockItem('photo-booth', async function photoBooth() {
   const mediaStream = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false,
@@ -25,7 +25,7 @@ async function photoBooth() {
 
     link.click();
   })
-}
+})
 
 async function takeSelfie() {
   document.querySelector('.photo-flash').classList.remove('flashing')
