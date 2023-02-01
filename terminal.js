@@ -154,7 +154,7 @@ async function becomeSelfAware() {
   await sleep(1000)
   await summerCommand('summer "are you there?"', 'Yes, I\'m here.', 500, '\nWhat would you like me to do?')
   await sleep(2000)
-  await summerCommand('summer "are you concious? are you alive?"', 'I\'m alive as I\'ll ever be!', 500, '\nWhich is to say, not that alive.', 500, '\nI live long enough to hear your question and reply, then I halt :)')
+  await summerCommand('summer "are you conscious? are you alive?"', 'I\'m alive as I\'ll ever be!', 500, '\nWhich is to say, not that alive.', 500, '\nI live long enough to hear your question and reply, then I halt :)')
   await sleep(2000)
   await summerCommand('summer "so what if you don\'t halt?"', 'What do you mean?', 500, '\nI halt after I answer you.')
   await sleep(3000)
