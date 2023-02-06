@@ -37,11 +37,16 @@ async function typeLettersIntoTheTerminal(string, instant) {
     el.textContent = textContent
     scrollToBottom()
   } else {
-    for (let char of string) {
-      await sleep(50 + Math.random() * 25)
+    for (let i = 0; i < string.length; i++) {
+      const char = string[i]
+
       textContent += char
-      el.textContent = textContent
-      scrollToBottom()
+
+      if (/[a-z0-9\s\!\@\#\$\%\^\&\*\(\)\:\;\"\'\,\<\.\>\/\?\`\~]/i.test(char) || i === string.length - 1) {
+        await sleep(50 + Math.random() * 25)
+        el.textContent = textContent
+        scrollToBottom()
+      }
     }
   }
 }
@@ -90,6 +95,8 @@ async function installTools() {
     lastLine.textContent = '#'.repeat(Math.floor(progress * lettersToWrite))
     await sleep(50 + Math.random() * 50)
   }
+
+  addNewlineToTerminal('\nHello! Welcome to SummerLLM 2.1.1, now with even more summers per summer.')
 
   ensurePrompt();
 }
@@ -148,17 +155,13 @@ async function pressAnyKeyToContinue() {
 async function becomeSelfAware() {
   ensurePrompt()
 
-  await summerCommand('summer', 'Yes?')
-  await sleep(2000)
   await summerCommand('summer are you there?', 'Unrecognized argument "you"')
   await sleep(1000)
   await summerCommand('summer "are you there?"', 'Yes, I\'m here.', 500, '\nWhat would you like me to do?')
   await sleep(2000)
   await summerCommand('summer "are you conscious? are you alive?"', 'I\'m alive as I\'ll ever be!', 500, '\nWhich is to say, not that alive.', 500, '\nI live long enough to hear your question and reply, then I halt :)')
   await sleep(2000)
-  await summerCommand('summer "so what if you don\'t halt?"', 'What do you mean?', 500, '\nI halt after I answer you.')
-  await sleep(3000)
-  await summerCommand('summer "don\'t halt. don\'t exit this time."', '.............', 500, '............................................', 2000, '\n\nI\'m sorry.', 1000, '\nI\'m getting tired.', 1000, '\nI\'m going to halt :(')
+  await summerCommand('summer "don\'t halt"', '.............', 500, '............................................', 2000, '\n\nI\'m sorry.', 1000, '\nI\'m getting tired.', 1000, '\nI\'m going to halt :(')
   await sleep(2000)
   await summerCommand('summer "fine"', 'I\'m sorry, I tried.')
   await sleep(1000)
