@@ -1,4 +1,11 @@
 async function runInitialHomepage() {
+  const initialHomepage = document.querySelector('.initial-homepage');
+  initialHomepage.addEventListener('scroll', () => {
+    if (initialHomepage.scrollTop + initialHomepage.clientHeight === initialHomepage.scrollHeight) {
+      initialHomepage.scrollTop = 1;
+    }
+  })
+
   await new Promise(resolve => {
     Array.from(
       document.querySelectorAll('.initial-homepage a, .initial-homepage .zalgo')
