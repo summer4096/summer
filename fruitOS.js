@@ -2,6 +2,8 @@
  * Fruit OS system homepage
  */
 
+let currentWindowZIndex = 100;
+
 function bindDockItem(className, callback) {
   const dockIcon = document.querySelector('.fruitOS .desktop .dock .dock-icon.' + className)
 
@@ -23,6 +25,12 @@ function bindDockItem(className, callback) {
   
     const positioner = document.querySelector('.fruitOS .window-positioner.' + className)
     positioner.style.transform = `translate(${xOrigin}px, ${yOrigin}px)`
+    positioner.style.zIndex = currentWindowZIndex;
+    currentWindowZIndex++;
+    positioner.onclick = () => {
+      positioner.style.zIndex = currentWindowZIndex;
+      currentWindowZIndex++;
+    }
   
     await sleep(500);
   
