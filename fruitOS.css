@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   background: black;
+  z-index: 13;
 }
 
 .boot-screen {
@@ -224,8 +225,6 @@
 }
 
 .fruitOS .window iframe {
-  width: 100%;
-  height: 100%;
   border: 0;
 }
 
@@ -297,8 +296,20 @@
   background: white;
   opacity: 0;
   pointer-events: none;
+  z-index: 14;
 }
 
 .photo-flash.flashing {
   animation: 1s flash;
+}
+
+/* .zombo-com .window-main {
+  width: 66.666vh;
+  height: 20vh;
+  overflow: hidden;
+} */
+
+.zombo-com iframe {
+  width: 85vh;
+  height: 25vh;
 }

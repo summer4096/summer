@@ -5,6 +5,13 @@
   font-size: 18px;
   overflow: hidden;
   padding: 128px 16px;
+  z-index: 12;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.terminal.invisible {
+  opacity: 0 !important;
+  pointer-events: none;
 }
 .terminal-lines {
   margin: auto;

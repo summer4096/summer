@@ -11,7 +11,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: background 0.3s, backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s;
+  z-index: 9;
 }
 
 .backdrop.visible {
@@ -19,6 +20,7 @@
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   pointer-events: all;
+  z-index: 11;
 }
 
 .dialog {

@@ -4,6 +4,8 @@
   line-height: 1.2;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
+  background: white;
+  z-index: 10;
 }
 .initial-homepage::-webkit-scrollbar { 
   display: none;  /* Safari and Chrome */
