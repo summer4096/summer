@@ -31,13 +31,14 @@ function bindDockItem(className, callback) {
       positioner.style.zIndex = currentWindowZIndex;
       currentWindowZIndex++;
     }
-  
-    await sleep(500);
-  
+
+    await Promise.all([
+      sleep(500),
+      callback()
+    ])
+
     positioner.classList.add('launching')
     positioner.style.transform = `translate(${xTarget}px, ${yTarget}px)`
-  
-    callback();
   })
 }
 

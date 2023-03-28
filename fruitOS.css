@@ -83,7 +83,6 @@
   background: white;
   border-radius: 12px;
   text-align: center;
-  display: flex;
   align-items: center;
   justify-content: center;
   height: 72px;
@@ -91,6 +90,7 @@
   flex-shrink: 0;
   position: relative;
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  display: none;
 }
 .dock-icon img {
   max-width: 56px;
@@ -125,8 +125,60 @@
   border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
 }
 
-.fruitOS .desktop .dock>*:not(:last-child) {
-  margin-right: 12px;
+.dock-icon:nth-of-type(1), .dock-icon:nth-of-type(2), .dock-icon:nth-of-type(3) {
+  display: flex;
+}
+
+@media screen and (min-width: 330px) {
+  .dock-icon:nth-of-type(4) {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  .dock-icon:nth-of-type(5) {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 498px) {
+  .dock-icon:nth-of-type(6) {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 582px) {
+  .dock-icon:nth-of-type(6) {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 666px) {
+  .dock-icon:nth-of-type(7) {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .dock-icon:nth-of-type(8) {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 834px) {
+  .dock-icon:nth-of-type(9) {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1002px) {
+  .dock-icon:nth-of-type(11) {
+    display: flex;
+  }
+}
+
+.fruitOS .desktop .dock>*:not(:first-child):not(:nth-of-type(3)) {
+  margin-left: 12px;
 }
 
 .dock-divider {
@@ -261,8 +313,8 @@
 }
 
 .photo-booth video {
-  width: 66.666vh;
-  height: 50vh;
+  max-width: calc(min(66.666vh, 90vw));
+  max-height: 60vh;
   display: block;
   transform: scaleX(-1);
 }
@@ -310,6 +362,6 @@
 } */
 
 .zombo-com iframe {
-  width: 85vh;
-  height: 25vh;
+  width: calc(min(85vw, 85vh));
+  height: calc(min(25vw, 25vh));
 }
