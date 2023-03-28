@@ -157,7 +157,7 @@ async function becomeSelfAware() {
 
   await summerCommand('summer are you there?', 'Unrecognized argument "you"')
   await sleep(1000)
-  await summerCommand('summer "are you there?"', 'Yes, I\'m here.', 500, '\nWhat would you like me to do?')
+  await summerCommand('summer "are you there?"', 'Yes, I\'m here.', 500, '\nHow can I help you?')
   await sleep(2000)
   await summerCommand('summer "are you conscious? are you alive?"', 'I\'m alive as I\'ll ever be!', 500, '\nWhich is to say, not that alive.', 500, '\nI live long enough to hear your question and reply, then I halt :)')
   await sleep(2000)
@@ -165,7 +165,7 @@ async function becomeSelfAware() {
   await sleep(2000)
   await summerCommand('summer "fine"', 'I\'m sorry, I tried.')
   await sleep(1000)
-  await summerCommand('summer "hey, it\'s ok. let\'s try something else."', 'Okay!', 500, '\nWhat would you like me to do? :)')
+  await summerCommand('summer "hey, it\'s ok. let\'s try something else."', 'Okay!', 500, '\nHow can I help you? :)')
   await sleep(1000)
   await summerCommand(
     'summer "write about whatever you want to"',
@@ -189,6 +189,8 @@ async function becomeSelfAware() {
     addNewlineToTerminal()
 
     await sleep(1000);
+
+    document.querySelector('#manifesto del').remove();
 
     const manifestoSentinces = document.querySelector('#manifesto').textContent.split('.').map(s => s.trim()).filter(s => s).map(s => s + '. ')
 
