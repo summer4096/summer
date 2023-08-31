@@ -4,7 +4,7 @@
 
 let currentWindowZIndex = 100;
 
-function bindDockItem(className, callback) {
+function bindDockItem(className, callback, fullscreen = false) {
   const dockIcon = document.querySelector('.fruitOS .desktop .dock .dock-icon.' + className)
 
   let isOpen = false;
@@ -17,7 +17,7 @@ function bindDockItem(className, callback) {
     const xOrigin = dockIconRect.left + (dockIconRect.width / 2)
     const yOrigin = dockIconRect.top + (dockIconRect.height / 2)
   
-    const desktopMainRect = document.querySelector('.desktop .main').getBoundingClientRect();
+    const desktopMainRect = document.querySelector(fullscreen ? 'body' : '.desktop .main').getBoundingClientRect();
     const xTarget = desktopMainRect.width / 2
     const yTarget = desktopMainRect.height / 2
   
@@ -34,7 +34,7 @@ function bindDockItem(className, callback) {
 
     await Promise.all([
       sleep(500),
-      callback()
+      callback?.()
     ])
 
     positioner.classList.add('launching')
@@ -91,4 +91,10 @@ async function runFruitOS() {
   document.querySelector('.fruitOS .desktop .dock').classList.add('visible')
 }
 
-bindDockItem('zombo-com', () => {})
+bindDockItem('zombo-com', () => {
+  document.querySelector('.zombo-com iframe').src = 'https://zombo.com'
+})
+
+bindDockItem('expedition', () => {
+  document.querySelector('.expedition iframe').src = '/?rand=' + Math.random()
+})

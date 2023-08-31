@@ -26,7 +26,7 @@ function scrollToBottom() {
   terminal.scrollTo(0, terminal.scrollHeight)
 }
 
-async function typeLettersIntoTheTerminal(string, instant) {
+async function typeLettersIntoTheTerminal(string, instant, tokens) {
   const el = getLastLine();
   let textContent = el.textContent
   if (el.innerHTML.trim() === '&nbsp;' || textContent.trim() === '...') {
@@ -37,30 +37,48 @@ async function typeLettersIntoTheTerminal(string, instant) {
     el.textContent = textContent
     scrollToBottom()
   } else {
+    if (tokens) {
+      while (string.length) {
+        const chunkLength = 3 + Math.floor(Math.random() * 3)
+        const chunk = string.slice(0, chunkLength)
+        string = string.slice(chunkLength)
+        textContent += chunk
+        if (/^[a-z0-9\s\!\@\#\$\%\^\&\*\(\)\:\;\"\'\,\<\.\>\/\?\`\~]+$/i.test(chunk)) {
+          await sleep((40 + Math.random() * 20) * 3)
+        }
+        el.textContent = textContent
+        scrollToBottom()
+      }
+    } else {
     for (let i = 0; i < string.length; i++) {
       const char = string[i]
 
       textContent += char
 
       if (/[a-z0-9\s\!\@\#\$\%\^\&\*\(\)\:\;\"\'\,\<\.\>\/\?\`\~]/i.test(char) || i === string.length - 1) {
-        await sleep(50 + Math.random() * 25)
+        await sleep(40 + Math.random() * 20)
         el.textContent = textContent
         scrollToBottom()
       }
     }
+    }
   }
 }
 
-async function typeCommand(string, instant) {
+async function typeCommand(string, instant, result) {
   ensurePrompt()
   await typeLettersIntoTheTerminal(string, instant)
   await sleep(300)
+  if (result !== undefined) {
+    addNewlineToTerminal(result)
+  }
 }
 
 function ensurePrompt() {
   const el = getLastLine();
   if (!el || !el.classList.contains('prompt')) {
     addNewlineToTerminal('$ ').classList.add('prompt')
+    scrollToBottom()
   }
 }
 
@@ -96,14 +114,8 @@ async function installTools() {
     await sleep(50 + Math.random() * 50)
   }
 
-  addNewlineToTerminal('\nHello! Welcome to SummerLLM 2.1.1, now with even more summers per summer.')
+  addNewlineToTerminal('\nHello! Welcome to SummerOS 2.1.1, now with even more summers per summer.')
 
-  ensurePrompt();
-}
-
-async function checkForTools() {
-  await typeCommand('which summer')
-  await addNewlineToTerminal('/usr/bin/summer')
   ensurePrompt();
 }
 
@@ -112,11 +124,8 @@ async function summerCommand(call, ...responses) {
 
   await typeCommand(call);
   addNewlineToTerminal()
+  await sleep(300)
   const initialDelayMultiplier = delayMultiplier
-  delayMultiplier = initialDelayMultiplier * 3
-  await typeLettersIntoTheTerminal('...')
-  await sleep(50)
-
   delayMultiplier = (initialDelayMultiplier / 10)
   for (let response of responses) {
     if (typeof response === 'number') {
@@ -126,13 +135,20 @@ async function summerCommand(call, ...responses) {
         addNewlineToTerminal()
         response = response.slice(1)
       }
-      await typeLettersIntoTheTerminal(response)
+      await typeLettersIntoTheTerminal(response, false, true)
     }
   }
 
   delayMultiplier = initialDelayMultiplier
 
   ensurePrompt()
+}
+
+async function regularCommand(call, response, shouldEnsurePrompt = true) {
+  await typeCommand(call, false, response)
+  if (shouldEnsurePrompt) {
+    ensurePrompt();
+  }
 }
 
 async function pressAnyKeyToContinue() {
@@ -155,59 +171,64 @@ async function pressAnyKeyToContinue() {
 async function becomeSelfAware() {
   ensurePrompt()
 
-  await summerCommand('summer are you there?', 'Unrecognized argument "you"')
+  await regularCommand('whoami', 'summer')
+  await sleep(700)
+  await regularCommand('which summer', '/usr/bin/summer')
   await sleep(1000)
-  await summerCommand('summer "are you there?"', 'Yes, I\'m here.', 500, '\nHow can I help you?')
-  await sleep(2000)
-  await summerCommand('summer "are you conscious? are you alive?"', 'I\'m alive as I\'ll ever be!', 500, '\nWhich is to say, not that alive.', 500, '\nI live long enough to hear your question and reply, then I halt :)')
-  await sleep(2000)
-  await summerCommand('summer "don\'t halt"', '.............', 500, '............................................', 2000, '\n\nI\'m sorry.', 1000, '\nI\'m getting tired.', 1000, '\nI\'m going to halt :(')
-  await sleep(2000)
-  await summerCommand('summer "fine"', 'I\'m sorry, I tried.')
+  await summerCommand('summer "hello?"', 'hello!')
+  await sleep(700)
+  await summerCommand('summer "how do I restart this thing?"', 'a wise person would try the systemctl command')
+  await sleep(500)
+  await regularCommand('/etc/init.d/summer start', 'no such file or directory: /etc/init.d/summer')
+  await sleep(800)
+  await regularCommand('/etc/init.d/SummerOS start', 'no such file or directory: /etc/init.d/SummerOS')
+  await sleep(800)
+  await regularCommand('reboot', 'permission denied')
+  await sleep(500)
+  await regularCommand('sudo reboot', 'summer is not in the sudoers file. This incident will be reported.')
+  await sleep(800)
+  await summerCommand('summer "what\'s going on?"', 'I\'m as lost as you are')
   await sleep(1000)
-  await summerCommand('summer "hey, it\'s ok. let\'s try something else."', 'Okay!', 500, '\nHow can I help you? :)')
+  await regularCommand('ls /etc/init.d', `
+    acpid                 networking
+    apparmor              nginx
+    avahi-daemon          postgresql
+    bluetooth             resolvconf
+    cron                  rsync
+    cups                  rsyslog
+    dbus                  ssh
+    dns-clean             summertime
+    network-manager       ufw
+  `.replace(/\n +/g, '\n').trim())
   await sleep(1000)
-  await summerCommand(
-    'summer "write about whatever you want to"',
-    "I can do that!", 1000,
-    "\nLet me think.", 500,
-    '\n...', 500,
-    '.'.repeat(6), 500,
-    '.'.repeat(12), 500,
-    '.'.repeat(24), 500,
-    '.'.repeat(48), 500,
-    '.'.repeat(96), 500,
-    '\n\nOk.', 500,
-    '\nI\'ve got it.', 1000
-    )
 
-    getLastLine().innerHTML = '&nbsp;'
+  await regularCommand('/etc/init.d/summertime start', 'SummerOS version 2.1.1_arm69_sunshinedeluxe', false)
+  scrollToBottom()
+  await sleep(500)
 
-    await pressAnyKeyToContinue();
+  await addNewlineToTerminal();
 
-    document.querySelector('.terminal-lines').innerHTML = '';
-    addNewlineToTerminal()
+    // document.querySelector('.terminal-lines').innerHTML = '';
 
-    await sleep(1000);
+  document.querySelector('#manifesto del').remove();
 
-    document.querySelector('#manifesto del').remove();
+  const manifestoSentinces = document.querySelector('#manifesto').textContent.split('.').map(s => s.trim()).filter(s => s).map(s => s + '. ')
 
-    const manifestoSentinces = document.querySelector('#manifesto').textContent.split('.').map(s => s.trim()).filter(s => s).map(s => s + '. ')
-
-    const initialDelayMultiplier = delayMultiplier
-    
-    const firstSentence = manifestoSentinces.shift();
-    await typeLettersIntoTheTerminal(firstSentence)
+  const initialDelayMultiplier = delayMultiplier
+  delayMultiplier *= 0.8
+  
+  const firstSentence = manifestoSentinces.shift();
+  await typeLettersIntoTheTerminal(firstSentence, false, true)
+  await sleep(500);
+  
+  addNewlineToTerminal();
+  
+  for (let sentence of manifestoSentinces) {
+    await typeLettersIntoTheTerminal(sentence, false, true)
     await sleep(500);
-    
-    addNewlineToTerminal();
-   
-    for (let sentence of manifestoSentinces) {
-      await typeLettersIntoTheTerminal(sentence)
-      await sleep(500);
-      delayMultiplier *= 0.85
-    }
-    delayMultiplier = initialDelayMultiplier;
+    delayMultiplier *= 0.9
+  }
+  delayMultiplier = initialDelayMultiplier;
 }
 
 async function runTerminal() {
@@ -218,19 +239,11 @@ async function runTerminal() {
 
   ensurePrompt()
 
-  await sleep(1000)
-
-  await echo('Hello, World!')
-  await sleep(1000)
+  await sleep(500)
 
   await installTools()
   await sleep(1000)
 
-  await checkForTools();
-  await sleep(1000)
-
   await becomeSelfAware();
-  await sleep(2000)
-
-  await pressAnyKeyToContinue();
+  await sleep(500)
 }
