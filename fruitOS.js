@@ -98,3 +98,11 @@ bindDockItem('zombo-com', () => {
 bindDockItem('expedition', () => {
   document.querySelector('.expedition iframe').src = '/?rand=' + Math.random()
 })
+
+bindDockItem('stars', () => setTimeout(() => {
+  window.location = '/stars.html'
+}, 1000), true)
+
+bindDockItem('headache', () => setTimeout(() => {
+  window.location = '/headache.html'
+}, 1000), true)
