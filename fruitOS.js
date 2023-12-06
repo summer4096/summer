@@ -41,6 +41,7 @@ function bindDockItem(className, callback, fullscreen = false) {
     positioner.style.transform = `translate(${xTarget}px, ${yTarget}px)`
 
     const close = () => {
+      if (!isOpen) return
       dockIcon.classList.remove('bounce')
 
       positioner.classList.add('closing')
@@ -147,3 +148,7 @@ bindDockItem('headache', () => setTimeout(() => {
   history.replaceState(null, null, '#fruitOS');
   window.location = '/headache.html'
 }, 1000), true)
+
+bindDockItem('textedit', () => {
+  document.querySelector('.textedit .window-main .note-content').innerText = document.querySelector('#manifesto').textContent.trim();
+})

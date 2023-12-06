@@ -45,7 +45,7 @@
 }
 
 .fruitOS .desktop {
-  background: url(background.svg) center center / cover no-repeat;
+  background: url(abstract.jpg) center center / cover no-repeat;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -82,6 +82,7 @@
 }
 
 .dock-icon {
+  display: flex;
   background: white;
   border-radius: 12px;
   text-align: center;
@@ -92,7 +93,6 @@
   flex-shrink: 0;
   position: relative;
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
-  display: none;
 }
 .dock-icon img {
   max-width: 56px;
@@ -127,59 +127,7 @@
   border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
 }
 
-.dock-icon:nth-of-type(1), .dock-icon:nth-of-type(2), .dock-icon:nth-of-type(3) {
-  display: flex;
-}
-
-@media screen and (min-width: 330px) {
-  .dock-icon:nth-of-type(4) {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 414px) {
-  .dock-icon:nth-of-type(5) {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 498px) {
-  .dock-icon:nth-of-type(6) {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 582px) {
-  .dock-icon:nth-of-type(6) {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 666px) {
-  .dock-icon:nth-of-type(7) {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 750px) {
-  .dock-icon:nth-of-type(8) {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 834px) {
-  .dock-icon:nth-of-type(9) {
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 1002px) {
-  .dock-icon:nth-of-type(11) {
-    display: flex;
-  }
-}
-
-.fruitOS .desktop .dock>*:not(:first-child):not(:nth-of-type(3)) {
+.fruitOS .desktop .dock>*:not(:first-child) {
   margin-left: 12px;
 }
 
@@ -187,7 +135,31 @@
   width: 1px;
   height: 100%;
   background: rgba(255,255,255,0.3);
-  margin-right: 12px;
+}
+
+@media screen and (max-width: 570px) {
+  .fruitOS .desktop .dock-area {
+    padding: 8px;
+  }
+  .fruitOS .desktop .dock {
+    padding: 8px;
+    border-radius: 18px;
+    height: 72px;
+  }
+  .dock-icon {
+    width: 56px;
+    height: 56px;
+  }
+  .dock-icon img {
+    max-width: 44px;
+    max-height: 44px;
+  }
+  .fruitOS .desktop .dock>*:not(:first-child) {
+    margin-left: 8px;
+  }
+  .dock-divider {
+    display: none;
+  }
 }
 
 @keyframes bounce {
@@ -224,7 +196,7 @@
 
 .fruitOS .window {
   flex-shrink: 0;
-  background: rgba(225, 225, 225, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-radius: 12px;
@@ -386,4 +358,39 @@
   width: calc(100vw + 48px);
   height: calc(100vh + 48px);
   box-shadow: none;
+}
+
+.textedit .window-main {
+  width: calc(min(400px, 100vw - 32px - 16px));
+  height: 320px;
+  overflow: auto;
+  background: rgba(255,255,255,0.5);
+  position: relative;
+}
+
+.textedit .note-content {
+  padding: 8px;
+  overflow: auto;
+  box-sizing: border-box;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 1ex;
+  padding: 4px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
