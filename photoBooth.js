@@ -37,6 +37,7 @@ bindDockItem('photo-booth', async function photoBooth() {
 })
 
 async function takeSelfie() {
+  new Audio('./camera.mp3').play()
   document.querySelector('.photo-flash').classList.remove('flashing')
   await new Promise(resolve => requestAnimationFrame(resolve))
   document.querySelector('.photo-flash').classList.add('flashing')
