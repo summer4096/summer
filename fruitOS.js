@@ -2,7 +2,7 @@
  * Fruit OS system homepage
  */
 
-let currentWindowZIndex = 100;
+let currentWindowZIndex = 1000;
 
 function bindDockItem(className, callback, fullscreen = false) {
   const dockIcon = document.querySelector('.fruitOS .desktop .dock .dock-icon.' + className)
@@ -51,12 +51,17 @@ function bindDockItem(className, callback, fullscreen = false) {
         setTimeout(() => {
           destroy?.()
           isOpen = false
+          positioner.classList.remove('closing')
         }, 800)
     }
 
-    positioner.querySelector('.titlebar-close').addEventListener('click', close, {once: true})
-    positioner.querySelector('.titlebar-minimize').addEventListener('click', close, {once: true})
+    positioner.querySelector('.titlebar-close')?.addEventListener('click', close, {once: true})
+    positioner.querySelector('.titlebar-minimize')?.addEventListener('click', close, {once: true})
     dockIcon.addEventListener('click', close, {once: true})
+
+    if (fullscreen) {
+      setTimeout(close, 3000)
+    }
   })
 }
 
@@ -139,21 +144,19 @@ bindDockItem('expedition', () => {
   }
 })
 
-bindDockItem('stars', () => setTimeout(() => {
-  history.replaceState(null, null, '#fruitOS');
-  window.location = '/stars.html'
+bindDockItem('stars', () => {
   setTimeout(() => {
-    window.location.reload();
-  }, 100)
-}, 1000), true)
+    history.replaceState(null, null, '#fruitOS');
+    window.location = '/stars.html'
+  }, 1000)
+}, true)
 
-bindDockItem('headache', () => setTimeout(() => {
-  history.replaceState(null, null, '#fruitOS');
-  window.location = '/headache.html'
+bindDockItem('headache', () => {
   setTimeout(() => {
-    window.location.reload();
-  }, 100)
-}, 1000), true)
+    history.replaceState(null, null, '#fruitOS');
+    window.location = '/headache.html'
+  }, 1000)
+}, true)
 
 bindDockItem('textedit', () => {
   document.querySelector('.textedit .window-main .note-content').innerText = document.querySelector('#manifesto').textContent.trim();

@@ -337,6 +337,7 @@
 
 .expedition .window {
   width: calc(100vw - 48px);
+  max-width: 120vh;
   height: calc(100vh - 32px - 136px - 48px);
 }
 
