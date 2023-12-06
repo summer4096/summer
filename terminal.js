@@ -172,23 +172,23 @@ async function becomeSelfAware() {
   ensurePrompt()
 
   await regularCommand('whoami', 'summer')
-  await sleep(700)
+  await sleep(300)
   await regularCommand('which summer', '/usr/bin/summer')
-  await sleep(1000)
+  await sleep(500)
   await summerCommand('summer "hello?"', 'hello!')
-  await sleep(700)
+  await sleep(500)
   await summerCommand('summer "how do I restart this thing?"', 'a wise person would try the systemctl command')
-  await sleep(500)
+  await sleep(400)
   await regularCommand('/etc/init.d/summer start', 'no such file or directory: /etc/init.d/summer')
-  await sleep(800)
-  await regularCommand('/etc/init.d/SummerOS start', 'no such file or directory: /etc/init.d/SummerOS')
-  await sleep(800)
-  await regularCommand('reboot', 'permission denied')
   await sleep(500)
+  await regularCommand('/etc/init.d/SummerOS start', 'no such file or directory: /etc/init.d/SummerOS')
+  await sleep(500)
+  await regularCommand('reboot', 'permission denied')
+  await sleep(400)
   await regularCommand('sudo reboot', 'summer is not in the sudoers file. This incident will be reported.')
-  await sleep(800)
+  await sleep(400)
   await summerCommand('summer "what\'s going on?"', 'I\'m as lost as you are')
-  await sleep(1000)
+  await sleep(800)
   await regularCommand('ls /etc/init.d', `
     acpid                 networking
     apparmor              nginx
@@ -215,7 +215,7 @@ async function becomeSelfAware() {
   const manifestoSentinces = document.querySelector('#manifesto').textContent.split('.').map(s => s.trim()).filter(s => s).map(s => s + '. ')
 
   const initialDelayMultiplier = delayMultiplier
-  delayMultiplier *= 0.8
+  delayMultiplier *= 0.5
   
   const firstSentence = manifestoSentinces.shift();
   await typeLettersIntoTheTerminal(firstSentence, false, true)
@@ -245,5 +245,7 @@ async function runTerminal() {
   await sleep(1000)
 
   await becomeSelfAware();
-  await sleep(500)
+  await sleep(500);
+
+  window.hackerAudio?.pause();
 }

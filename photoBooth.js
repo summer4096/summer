@@ -1,3 +1,5 @@
+const selfieButton = document.querySelector('.photo-booth .selfie-button')
+
 bindDockItem('photo-booth', async function photoBooth() {
   const mediaStream = await navigator.mediaDevices.getUserMedia({
     video: true,
@@ -15,7 +17,7 @@ bindDockItem('photo-booth', async function photoBooth() {
   const track = mediaStream.getVideoTracks()[0];
   imageCapture = new ImageCapture(track);
 
-  document.querySelector('.photo-booth .selfie-button').addEventListener('click', async () => {
+  const onClick = async () => {
     const rawPhoto = await imageCapture.takePhoto()
     const url = URL.createObjectURL(rawPhoto);
 
@@ -24,7 +26,14 @@ bindDockItem('photo-booth', async function photoBooth() {
     link.href = url
 
     link.click();
-  })
+  }
+
+  selfieButton.addEventListener('click', onClick)
+
+  return () => {
+    mediaStream?.getTracks().forEach(track => track.stop())
+    selfieButton.removeEventListener('click', onClick)
+  }
 })
 
 async function takeSelfie() {
@@ -33,4 +42,4 @@ async function takeSelfie() {
   document.querySelector('.photo-flash').classList.add('flashing')
 }
 
-document.querySelector('.photo-booth .selfie-button').addEventListener('click', takeSelfie)
+selfieButton.addEventListener('click', takeSelfie)
