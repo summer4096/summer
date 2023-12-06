@@ -142,11 +142,17 @@ bindDockItem('expedition', () => {
 bindDockItem('stars', () => setTimeout(() => {
   history.replaceState(null, null, '#fruitOS');
   window.location = '/stars.html'
+  setTimeout(() => {
+    window.location.reload();
+  }, 100)
 }, 1000), true)
 
 bindDockItem('headache', () => setTimeout(() => {
   history.replaceState(null, null, '#fruitOS');
   window.location = '/headache.html'
+  setTimeout(() => {
+    window.location.reload();
+  }, 100)
 }, 1000), true)
 
 bindDockItem('textedit', () => {
