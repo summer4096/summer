@@ -218,7 +218,7 @@
   height: 0;
 }
 
-.fruitOS .window-positioner.launching {
+.fruitOS .window-positioner.launching, .fruitOS .window-positioner.closing {
   transition: transform 0.6s cubic-bezier(.02,.44,.3,.98);
 }
 
