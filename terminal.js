@@ -56,7 +56,7 @@ async function typeLettersIntoTheTerminal(string, instant, tokens) {
       textContent += char
 
       if (/[a-z0-9\s\!\@\#\$\%\^\&\*\(\)\:\;\"\'\,\<\.\>\/\?\`\~]/i.test(char) || i === string.length - 1) {
-        await sleep(40 + Math.random() * 20)
+        await sleep(20 + Math.random() * 10)
         el.textContent = textContent
         scrollToBottom()
       }
