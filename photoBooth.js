@@ -9,7 +9,7 @@ bindDockItem('photo-booth', async function photoBooth() {
   const videoElement = document.querySelector('.photo-booth video')
 
   videoElement.onCanPlay = () => {
-    gtag('event', `fruitOS_photo_booth_permission_enabled`);
+    heap.track(`fruitOS_photo_booth_permission_enabled`);
     mediaStream?.play()
   }
 
@@ -19,7 +19,7 @@ bindDockItem('photo-booth', async function photoBooth() {
   imageCapture = new ImageCapture(track);
 
   const onClick = async () => {
-    gtag('event', `fruitOS_photo_booth_took_photo`);
+    heap.track(`fruitOS_photo_booth_took_photo`);
     new Audio('./camera.mp3').play()
     document.querySelector('.photo-flash').classList.remove('flashing')
     await new Promise(resolve => requestAnimationFrame(resolve))
