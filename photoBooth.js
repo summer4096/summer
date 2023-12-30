@@ -9,6 +9,7 @@ bindDockItem('photo-booth', async function photoBooth() {
   const videoElement = document.querySelector('.photo-booth video')
 
   videoElement.onCanPlay = () => {
+    gtag('event', `fruitOS_photo_booth_permission_enabled`);
     mediaStream?.play()
   }
 
@@ -18,6 +19,12 @@ bindDockItem('photo-booth', async function photoBooth() {
   imageCapture = new ImageCapture(track);
 
   const onClick = async () => {
+    gtag('event', `fruitOS_photo_booth_took_photo`);
+    new Audio('./camera.mp3').play()
+    document.querySelector('.photo-flash').classList.remove('flashing')
+    await new Promise(resolve => requestAnimationFrame(resolve))
+    document.querySelector('.photo-flash').classList.add('flashing')
+
     const rawPhoto = await imageCapture.takePhoto()
     const url = URL.createObjectURL(rawPhoto);
 
@@ -35,12 +42,3 @@ bindDockItem('photo-booth', async function photoBooth() {
     selfieButton.removeEventListener('click', onClick)
   }
 })
-
-async function takeSelfie() {
-  new Audio('./camera.mp3').play()
-  document.querySelector('.photo-flash').classList.remove('flashing')
-  await new Promise(resolve => requestAnimationFrame(resolve))
-  document.querySelector('.photo-flash').classList.add('flashing')
-}
-
-selfieButton.addEventListener('click', takeSelfie)
