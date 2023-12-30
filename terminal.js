@@ -232,7 +232,7 @@ async function becomeSelfAware() {
 }
 
 async function runTerminal() {
-  gtag('event', 'terminal_opened');
+  heap.track('terminal_opened');
   document.querySelector('.terminal').classList.remove('invisible')
   // document.querySelector('.initial-homepage').classList.add('hide')
 
