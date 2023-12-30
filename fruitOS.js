@@ -11,6 +11,8 @@ function bindDockItem(className, callback, fullscreen = false) {
 
   dockIcon.addEventListener('click', async () => {
     if (isOpen) return
+
+    gtag('event', `fruitOS_app_launched_${className}`);
     isOpen = true
 
     const dockIconRect = dockIcon.getBoundingClientRect();
@@ -42,6 +44,7 @@ function bindDockItem(className, callback, fullscreen = false) {
 
     const close = () => {
       if (!isOpen) return
+      gtag('event', `fruitOS_app_closed_${className}`);
       dockIcon.classList.remove('bounce')
 
       positioner.classList.add('closing')
@@ -66,6 +69,7 @@ function bindDockItem(className, callback, fullscreen = false) {
 }
 
 async function runFruitOS() {
+  gtag('event', 'fruitOS_opened');
   document.querySelector('.initial-homepage').classList.add('hide')
   document.querySelector('.terminal').classList.add('hide')
 

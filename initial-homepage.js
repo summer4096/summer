@@ -3,6 +3,7 @@ async function runInitialHomepage() {
   initialHomepage.addEventListener('scroll', () => {
     if (initialHomepage.scrollTop + initialHomepage.clientHeight + 10 >= initialHomepage.scrollHeight) {
       initialHomepage.scrollTop = 0;
+      gtag('event', 'scroll_wrap');
     }
   })
 
@@ -19,6 +20,8 @@ async function runInitialHomepage() {
       })
     )
   })
+
+  gtag('event', 'windows_xp_error_message');
 
   document.querySelector('.backdrop').classList.add('visible')
 
