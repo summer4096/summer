@@ -7,6 +7,8 @@ async function runInitialHomepage() {
     }
   })
 
+  initialHomepage.scrollBy(0, 55) // sneak peak
+
   document.querySelector('.dialog').style.transform = `scale(${Math.min(2, (window.innerWidth - 16) / document.querySelector('.dialog').clientWidth)})`
 
   await new Promise(resolve => {
