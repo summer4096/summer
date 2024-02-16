@@ -263,14 +263,22 @@
   display: flex;
 }
 
-.fruitOS .menu-bar-item {
+.fruitOS .menu-bar-item, .fruitOS .menu-item {
   color: rgba(255,255,255,0.8);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   font-size: 14px;
+}
+
+.fruitOS .menu-item:hover {
+  background: #f20065;
+}
+
+.fruitOS .menu-bar-item {
+  padding: 0 8px;
   height: 100%;
   display: flex;
   align-items: center;
   line-height: 1;
-  padding: 0 8px;
   flex-shrink: 0;
   cursor: default;
 }
@@ -285,6 +293,86 @@
 
 .fruitOS .menu-bar-item.logo img {
   height: 20px;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  outline: none;
+}
+
+.dropdown:focus .menu-bar-item::before {
+  content: '';
+  background: rgba(255,255,255,0.1);
+  position: absolute;
+  top: 0;
+  left: -4px;
+  right: -4px;
+  bottom: 0;
+  z-index: -1;
+  border-radius: 6px;
+}
+
+.dropdown .dropdown-content {
+  position: absolute;
+  top: 50%;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100000;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 120%;
+  padding: 4px;
+  transform: translate(-4px, 17px);
+  border: 0.8px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.4), 0 0 16px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown.logo-dropdown .dropdown-content {
+  transform: translate(6px, 17px);
+}
+
+.dropdown-content .menu-item {
+  display: block;
+  padding: 4px 6px;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+  cursor: default;
+  min-width: 150px;
+  border-radius: 4px;
+}
+
+.dropdown:focus .dropdown-content {
+  outline: none;
+  visibility: visible;
+  opacity: 1;
+  border-radius: 4px;
+}
+
+.dropdown .close-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 10;
+  display: none;
+}
+
+.dropdown:focus .close-mask {
+  display: inline-block;
+}
+
+.dropdown .close-mask:focus .dropdown-content, .dropdown-content .db3:focus .dropdown-content {
+  outline: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dropdown:focus  {
+  z-index: 1;
 }
 
 .photo-booth video {
@@ -335,30 +423,30 @@
   height: calc(min(25vw, 25vh));
 }
 
-.expedition .window {
+.expedition .window, .stars .window {
   width: calc(100vw - 48px);
   max-width: 120vh;
   height: calc(100vh - 32px - 136px - 48px);
 }
 
-.expedition iframe {
+.headache .window {
+  width: calc(100vw - 100px);
+  max-width: calc(120vh - 64px);
+  height: calc(min(100vh - 32px - 136px - 128px, (120vh - 64px) / 3, (100vw - 128px) / 3));
+}
+
+@media screen and (max-width: 1000px) {
+  .headache .window {
+    width: calc(100vw - 48px);
+    max-width: calc(120vh);
+    height: calc(min(100vh - 32px - 136px - 48px, 120vh / 1.5, (100vw - 48px) / 1.5));
+  }
+}
+
+.expedition iframe, .stars iframe, .headache iframe {
   overflow: hidden;
   width: 100%;
   height: 100%;
-}
-
-.stars .window {
-  background: black;
-  width: calc(100vw + 48px);
-  height: calc(100vh + 48px);
-  box-shadow: none;
-}
-
-.headache .window {
-  background: white;
-  width: calc(100vw + 48px);
-  height: calc(100vh + 48px);
-  box-shadow: none;
 }
 
 .textedit .window-main {

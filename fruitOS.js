@@ -8,12 +8,15 @@ function bindDockItem(className, callback, fullscreen = false) {
   const dockIcon = document.querySelector('.fruitOS .desktop .dock .dock-icon.' + className)
 
   let isOpen = false;
+  let isOpening = false;
+  let isClosing = false;
 
   dockIcon.addEventListener('click', async () => {
-    if (isOpen) return
+    if (isOpen || isOpening || isClosing) return
 
     heap.track(`fruitOS_app_launched_${className}`);
     isOpen = true
+    isOpening = true
 
     const dockIconRect = dockIcon.getBoundingClientRect();
     const xOrigin = dockIconRect.left + (dockIconRect.width / 2)
@@ -42,8 +45,8 @@ function bindDockItem(className, callback, fullscreen = false) {
     positioner.classList.add('launching')
     positioner.style.transform = `translate(${xTarget}px, ${yTarget}px)`
 
-    const close = () => {
-      if (!isOpen) return
+    const close = async () => {
+      if (!isOpen || isOpening || isClosing) return
       heap.track(`fruitOS_app_closed_${className}`);
       dockIcon.classList.remove('bounce')
 
@@ -51,19 +54,22 @@ function bindDockItem(className, callback, fullscreen = false) {
       positioner.classList.remove('launching')
 
       positioner.style.transform = `translate(${xOrigin}px, ${yOrigin}px)`
-        setTimeout(() => {
-          destroy?.()
-          isOpen = false
-          positioner.classList.remove('closing')
-        }, 800)
+      await sleep(800)
+        destroy?.()
+        isOpen = false
+        isClosing = false
+        positioner.classList.remove('closing')
     }
+
+    await sleep(800)
+    isOpening = false
 
     positioner.querySelector('.titlebar-close')?.addEventListener('click', close, {once: true})
     positioner.querySelector('.titlebar-minimize')?.addEventListener('click', close, {once: true})
     dockIcon.addEventListener('click', close, {once: true})
 
     if (fullscreen) {
-      setTimeout(close, 3000)
+      setTimeout(close, 2200)
     }
   })
 }
@@ -149,18 +155,20 @@ bindDockItem('expedition', () => {
 })
 
 bindDockItem('stars', () => {
-  setTimeout(() => {
-    history.replaceState(null, null, '#fruitOS');
-    window.location = '/stars.html'
-  }, 1000)
-}, true)
+  document.querySelector('.stars iframe').src = '/stars.html?rand=' + Math.random()
+
+  return () => {
+    document.querySelector('.stars iframe').src = 'about:blank'
+  }
+})
 
 bindDockItem('headache', () => {
-  setTimeout(() => {
-    history.replaceState(null, null, '#fruitOS');
-    window.location = '/headache.html'
-  }, 1000)
-}, true)
+  document.querySelector('.headache iframe').src = '/headache.html?rand=' + Math.random()
+
+  return () => {
+    document.querySelector('.headache iframe').src = 'about:blank'
+  }
+})
 
 bindDockItem('textedit', () => {
   document.querySelector('.textedit .window-main .note-content').innerText = document.querySelector('#manifesto').textContent.trim();

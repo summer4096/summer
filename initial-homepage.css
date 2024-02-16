@@ -6,6 +6,7 @@
   scrollbar-width: none;  /* Firefox */
   background: white;
   z-index: 10;
+  scroll-behavior: smooth;
 }
 .initial-homepage::-webkit-scrollbar { 
   display: none;  /* Safari and Chrome */
@@ -124,13 +125,29 @@
 }
 
 .initial-homepage .zalgo {
-  color: #0000EE;
   cursor: pointer;
   position: relative;
+  display: inline-block;
 }
 
 .initial-homepage .zalgo:hover {
   text-decoration: underline;
+}
+
+.initial-homepage .zalgo .zalgo-text {
+  display: none;
+  color: #0000EE;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.initial-homepage.uncanny .zalgo-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+.initial-homepage.uncanny .plain-text {
+  opacity: 0;
 }
 
 .initial-homepage a {
@@ -141,6 +158,14 @@
 
 .initial-homepage a:hover {
   text-decoration: underline;
+}
+
+.initial-homepage .dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  transition: transform 10s linear;
 }
 
 @media screen and (max-width: 1250px) {
