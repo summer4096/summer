@@ -54,7 +54,7 @@ async function dialogBounceLoop() {
   const scale = Math.min(2, (window.innerWidth - 16) / dialog.clientWidth)
   document.querySelector('.dialog').style.transform = `scale(${scale})`
  
-  await sleep(30000)
+  await sleep(1000)
   dialog.classList.add('visible')
 
   while (true) {
