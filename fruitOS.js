@@ -173,3 +173,9 @@ bindDockItem('headache', () => {
 bindDockItem('textedit', () => {
   document.querySelector('.textedit .window-main .note-content').innerText = document.querySelector('#manifesto').textContent.trim();
 })
+
+setInterval(() => {
+  const date = new Date().toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric'})
+  const time = new Date().toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'})
+  document.querySelector('.dropdown.clock .menu-bar-item').innerText = date + ' ' + time
+}, 1000)

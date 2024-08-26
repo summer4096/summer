@@ -64,7 +64,7 @@
   z-index: 1000;
 }
 .fruitOS .desktop .dock {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 24px;
   height: 96px;
   margin: auto;
@@ -74,7 +74,7 @@
   box-sizing: border-box;
   transform: translateY(116px);
   transition: transform 0.3s ease-out;
-  box-shadow: 0 0 32px rgb(0 0 0 / 5%);
+  box-shadow: 0 0 32px rgb(0 0 0 / 5%), 0 0 0 1px rgba(255,255,255,0.2) inset, 0 0 1px black, 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .fruitOS .desktop .dock.visible {
@@ -92,15 +92,34 @@
   width: 72px;
   flex-shrink: 0;
   position: relative;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 0.5px 0 1px rgba(255, 255, 255, 0.15) inset;
 }
+.dock-icon.photo-booth {
+  background: linear-gradient(0deg, #c33 0%, #f77 100%);
+}
+.dock-icon.expedition {
+  background: linear-gradient(0deg, #89abc8 0%, #e4fbff 100%);
+}
+.dock-icon.zombo-com {
+  background: linear-gradient(0deg, #9564b0 0%, #f2c4ff 100%);
+}
+.dock-icon.stars {
+  background: linear-gradient(0deg, #393a50 0%, #a3a1bf 100%);
+}
+.dock-icon.headache {
+  background: linear-gradient(0deg, #779f82 0%, #b2d8bc 100%);
+}
+.dock-icon.textedit {
+  background: linear-gradient(0deg, #8063b7 0%, #e6d5ff 100%);
+}
+
 .dock-icon img {
   max-width: 56px;
   max-height: 56px;
 }
 .dock-icon .tooltip {
   position: absolute;
-  top: -51px;
+  top: -54px;
   text-align: center;
   display: none;
 }
@@ -109,22 +128,27 @@
 }
 .dock-icon .tooltip span {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.5);
-  color: rgba(0, 0, 0, 0.8);
+  background: #6d1d5f;
+  color: rgba(255,255,255,0.9);
   border-radius: 6px;
   padding: 6px 10px;
   position: relative;
   white-space: nowrap;
+  box-shadow: 0 0 0 1px #913b75, 0 0 0 2px rgba(0, 0, 0, 0.4), 0 0 6px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
 }
 .dock-icon .tooltip::after {
   content: "";
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-left: -6px;
-  border-width: 6px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
+  margin-left: -4px;
+  margin-top: -5px;
+  background: #6d1d5f;
+  box-shadow: 1px 1px 0 0px #913b75, 2px 2px 0 0px rgba(0, 0, 0, 0.4);
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
 }
 
 .fruitOS .desktop .dock>*:not(:first-child) {
@@ -299,6 +323,7 @@
   display: inline-block;
   position: relative;
   outline: none;
+  flex-shrink: 0;
 }
 
 .dropdown:focus .menu-bar-item::before {
@@ -373,6 +398,14 @@
 
 .dropdown:focus  {
   z-index: 1;
+}
+
+.menu-bar-spacer {
+  flex-grow: 1;
+}
+
+.dropdown.clock {
+  margin-right: 8px;
 }
 
 .photo-booth video {
