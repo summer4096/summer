@@ -1,0 +1,21 @@
+Additional fonts supplied by the Atlas Workshop site owner on 2026-09-19.
+The original font files are included unmodified.
+
+Pulsian
+Embedded attribution: Font made by El Hechicero, original from Final Fantasy 13,
+Copyright (c) Square Enix.
+
+Alphabet of the Magi
+No author or license text was included in the supplied archive or font metadata.
+
+Dungeon
+Embedded attribution: Made by Novandito; Jakarta. October, 30th, 2007.
+
+Rellanic (Regular, Italic, Bold, Bold Italic)
+Copyright (c) Neale Davidson, 2014. All Rights Reserved.
+See Rellanic-LICENSE.txt for the supplied Pixel Sagas license and web-embedding terms.
+
+The site owner confirmed permission to bundle all four fonts for public web use.
+This notice does not grant additional redistribution rights or replace the
+original authors' license terms. Font metadata, including embedding flags, is
+preserved in the supplied binaries.

@@ -1,0 +1,9 @@
+Latin Artano
+Author: Shankar Sivarajan
+Based on glyphs from Tengwar Annatar Italic, by Johan Winge.
+Source: https://github.com/shankarsivarajan/LatinArtano
+Revision: b7506975eba50057deb7dc89e46f0f5c404b2207
+
+The original font is included unmodified. The Atlas Workshop site owner
+confirmed permission to redistribute it for this application on 2026-09-19.
+No general license or additional redistribution rights are granted by this notice.
