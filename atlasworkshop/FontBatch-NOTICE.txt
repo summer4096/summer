@@ -1,0 +1,45 @@
+Additional fantasy fonts supplied by the Atlas Workshop site owner on 2026-09-19.
+The owner confirmed the rights to include these fonts. Original binaries and
+embedded attribution/license metadata are retained unmodified.
+
+Compatibility exception: the app uses TengwarCursive-web.ttf, generated from
+Tengwarc.ttf with FontTools. All glyphs were retained; the malformed legacy Mac
+character-map subtable and VDMX table were omitted and font tables rebuilt for
+browser compatibility. The original Tengwarc.ttf remains in the source assets.
+
+Bilbo Hand (regular and bold), Bilbo Hand Fine, Hobbiton Brushhand
+Copyright (c) Nancy Lorenz, 2001-2002. All rights reserved.
+Supplied Bilbo notices: font-notices/bilbo-regular/readme.txt,
+font-notices/bilbo-bold/readme.txt, font-notices/bilbo-fine/readme.txt.
+
+First Order (regular and italic), Plain, Condensed, Expanded, Light
+2001 Iconian Fonts - www.iconian.com.
+Supplied notice: font-notices/first-order/first.txt.
+
+Elvish Ring NFI
+Elvish Ring NFI v1.2 - copyright (c) 2002 - Thomas W. Otto,
+Norfok Inc. Font Design - www.norfok.com.
+The font's embedded license and license URL are preserved in the binary.
+
+Elven Common Speak, Tengwar Gandalf
+No author or separate license notice was present in the supplied archives.
+
+Fanjofey AH, Fanjofey Leoda AH
+Copyright (c) 2002 Fontgrube Andreas Hoefeld.
+Supplied notice: font-notices/fanjofey/Fanjofey.txt.
+
+Ringbearer
+V.1.00 (c) Pete Klassen, 2002.
+Supplied notices: font-notices/ringbearer/readme.html.txt,
+font-notices/ringbearer/liesmich.html.txt, font-notices/ringbearer/file_id.diz.
+HTML readmes are served as text, without executing embedded markup.
+
+Tengwar Cursive
+Harri Perala, 1999.
+
+Tengwar 03, 04, 05
+Copyright 1994 by Paulo A. Otto, July 22, 1994.
+
+This notice does not grant additional redistribution rights or replace the
+original authors' license terms. Duplicate font binaries were excluded by
+SHA-256 hash; distinct styles and variants were retained.

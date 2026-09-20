@@ -1,0 +1,35 @@
+Fanjofey AH
+
+This is a Tengwar lookalike font, AFAIK the first one of its kind.
+
+What is Tengwar anyway?
+
+It's an alphabet that John R. R. Tolkien devised for his trilogy "The Lord of the Rings". It is meant to be the way how the Elvish language of Quenya is written. Tengwar consists of consonants, vowels are marked by diacritic symbols (little dots and strokes). A number of digital fonts already exist for this alphabet. I tried to make a latin alphabet reminiscent of Tengwar letters.
+
+You can find more information on the Tengwar alphabet e. g. on:
+http://www.geocities.com/fontmaster.geo/tengwar/index.htm
+(Dan Smith's site, who makes some Tengwar fonts himself)
+
+This font is free for non-commercial, i. e. non-profit purposes. Commercial licenses available on request.
+
+If you do something sensible with it, I'd interested to learn about it; an email about your work with a link maybe is always appreciated. Also if you have any suggestions concerning this font.
+
+You can pass on this font as long as you keep this readme file with it.
+I suggest you use the ZIP archive that it comes with.
+
+You may change or convert it to another format for your personal use only. If you think there is something to improve, contact me before you circulate your modifications. I always listen to user suggestions but like to have the deciding vote on what form my fonts are available in public.
+
+If you want to put this font on your homepage please ask before you do. If you want to put it on a Font or software CD, feel free as long as you send me a specimen copy. Of course, font and readme file have to be kept together on homepages and CDs, too.
+
+
+Andreas Höfeld
+
+fontgrube@loop.de
+www.fontgrube.gmxhome.de
+
+
+History
+=======
+v. 1.1
+new A and AElig, old A on TM symbol, minor changes to H g x y z,
+new st ligature on logicalnot; some kerning added
